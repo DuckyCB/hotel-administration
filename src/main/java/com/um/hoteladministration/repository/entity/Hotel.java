@@ -4,29 +4,33 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel", schema = "hotel_administration")
 public class Hotel {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "hotel_id", nullable = false)
+    private Long hotel_id;
 
     @Column(name = "hotel_name", nullable = false, length = 40)
     private String hotelName;
 
-    @Column(name = "address", nullable = false, length = 40)
-    private String address;
+    @Column(name = "hotel_address", nullable = false, length = 40)
+    private String hotel_address;
 
     @Column(name = "room_qty", nullable = false)
     private Integer roomQty;
 
-    public Long getId() {
-        return id;
+    @OneToMany(mappedBy="departamento")
+    private final List<Room> rooms = new List<Room>();
+
+    public Long getHotel_id() {
+        return hotel_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setHotel_id(Long hotel_id) {
+        this.hotel_id = hotel_id;
     }
 
     public String getHotelName() {
@@ -37,12 +41,16 @@ public class Hotel {
         this.hotelName = hotelName;
     }
 
-    public String getAddress() {
-        return address;
+    public List<Room> getRooms() {
+        return rooms;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getHotel_address() {
+        return hotel_address;
+    }
+
+    public void setHotel_address(String hotel_address) {
+        this.hotel_address = hotel_address;
     }
 
     public Integer getRoomQty() {
