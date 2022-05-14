@@ -1,7 +1,7 @@
-package com.um.hoteladministration.services;
+package main.java.com.um.hoteladministration.services;
 
-import com.um.hoteladministration.repository.entity.Hotel;
-import com.um.hoteladministration.repository.entity.HotelRepository;
+import main.java.com.um.hoteladministration.repository.entities.Hotel;
+import main.java.com.um.hoteladministration.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

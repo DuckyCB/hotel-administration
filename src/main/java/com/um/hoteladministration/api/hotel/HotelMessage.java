@@ -1,25 +1,25 @@
-package com.um.hoteladministration.api.hotel;
+package main.java.com.um.hoteladministration.api.hotel;
 
 public class HotelMessage {
 
-    private Long id;
+    private Long hotelId;
     private String hotelName;
     private String address;
     private Integer roomQty;
 
-    public HotelMessage(Long id, String hotelName, String address, Integer roomQty) {
-        this.id = id;
+    public HotelMessage(Long hotelId, String hotelName, String address, Integer roomQty) {
+        this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.address = address;
         this.roomQty = roomQty;
     }
 
-    public Long getId() {
-        return id;
+    public Long getHotelId() {
+        return hotelId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setHotelId(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getHotelName() {
@@ -46,3 +46,4 @@ public class HotelMessage {
         this.roomQty = roomQty;
     }
 }
+

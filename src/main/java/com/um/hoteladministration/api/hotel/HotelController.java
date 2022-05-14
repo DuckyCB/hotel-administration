@@ -1,8 +1,8 @@
-package com.um.hoteladministration.api.hotel;
+package main.java.com.um.hoteladministration.api.hotel;
 
-import com.um.hoteladministration.repository.entity.Hotel;
-import com.um.hoteladministration.services.HotelService;
-import com.um.hoteladministration.services.mapper.HotelMapper;
+import main.java.com.um.hoteladministration.repository.entities.Hotel;
+import main.java.com.um.hoteladministration.services.HotelService;
+import main.java.com.um.hoteladministration.services.mapper.HotelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
