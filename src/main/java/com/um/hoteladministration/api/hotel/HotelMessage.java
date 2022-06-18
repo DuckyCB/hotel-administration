@@ -14,13 +14,9 @@ public class HotelMessage {
         this.roomQty = roomQty;
     }
 
-    public Long getHotelId() {
-        return hotelId;
-    }
+    public Long getHotelId() { return hotelId; }
 
-    public void setHotelId(Long hotelId) {
-        this.hotelId = hotelId;
-    }
+    public void setHotelId(Long hotelId) { this.hotelId = hotelId; }
 
     public String getHotelName() {
         return hotelName;

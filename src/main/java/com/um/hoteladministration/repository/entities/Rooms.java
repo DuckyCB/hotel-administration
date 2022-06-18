@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Rooms {
     @Id
     @Column(name = "roomId", nullable = false)
-    private Long id;
+    private Long roomId;
 
     @Column(name = "capacity", nullable = false)
     private Integer capacity;
@@ -22,12 +22,12 @@ public class Rooms {
     @OneToOne(mappedBy = "address")
     private Customer customer;
 
-    public Long getId() {
-        return id;
+    public Long getRoomId() {
+        return roomId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
     }
 
     public Integer getCapacity() {
@@ -38,11 +38,11 @@ public class Rooms {
         this.capacity = capacity;
     }
 
-    public Boolean getisTaken() {
+    public Boolean getIsTaken() {
         return isTaken;
     }
 
-    public void setisTaken(Boolean isTaken) {
+    public void setIsTaken(Boolean isTaken) {
         this.isTaken = isTaken;
     }
 
