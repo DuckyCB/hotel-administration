@@ -20,7 +20,7 @@ public class HotelService {
         return hotelRepository.getById(hotelId);
     }
     public Rooms getRoomById(Long hotelId, Long roomId){
-        Hotel hotel = hotelRepository.getById(hotelId);
+        Hotel hotel = getById(hotelId);
         for(Rooms room: hotel.getRooms()){
             if (room.getRoomId().equals(roomId)){
                 return room;
