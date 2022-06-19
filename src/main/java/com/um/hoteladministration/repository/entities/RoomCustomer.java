@@ -6,10 +6,10 @@ import javax.persistence.*;
 @Table(name = "room_customer", schema = "hotel_administration")
 public class RoomCustomer {
 
-    @Id
     @Column(name = "room_id", nullable = false)
     private Long roomId;
 
+    @Id
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
