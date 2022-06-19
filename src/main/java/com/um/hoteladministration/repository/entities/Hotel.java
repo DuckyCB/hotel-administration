@@ -1,34 +1,29 @@
-package main.java.com.um.hoteladministration.repository.entities;
+package com.um.hoteladministration.repository.entities;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 @Entity
 @Table(name = "hotel", schema = "hotel_administration")
 public class Hotel {
     @Id
-    @Column(name = "hotelId", nullable = false)
-    private Long hotelId;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @Column(name = "hotelName", nullable = false, length = 40)
+    @Column(name = "name", nullable = false, length = 40)
     private String hotelName;
 
-    @Column(name = "hotelAddress", nullable = false, length = 40)
-    private String hotelAddress;
+    @Column(name = "address", nullable = false, length = 40)
+    private String address;
 
-    @Column(name = "roomQty", nullable = false)
+    @Column(name = "room_qty", nullable = false)
     private Integer roomQty;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
-    private List<Rooms> rooms;
-
-    public Long getHotelId() {
-        return hotelId;
+    public Long getId() {
+        return id;
     }
 
-    public void setHotelId(Long hotelId) {
-        this.hotelId = hotelId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getHotelName() {
@@ -39,12 +34,12 @@ public class Hotel {
         this.hotelName = hotelName;
     }
 
-    public String getHotelAddress() {
-        return hotelAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setHotelAddress(String hotelAddress) {
-        this.hotelAddress = hotelAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Integer getRoomQty() {
@@ -53,14 +48,6 @@ public class Hotel {
 
     public void setRoomQty(Integer roomQty) {
         this.roomQty = roomQty;
-    }
-
-    public List<Rooms> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<Rooms> rooms) {
-        this.rooms = rooms;
     }
 }
 

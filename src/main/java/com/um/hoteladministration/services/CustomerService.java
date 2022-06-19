@@ -1,9 +1,11 @@
-package main.java.com.um.hoteladministration.services;
+package com.um.hoteladministration.services;
 
-import main.java.com.um.hoteladministration.repository.entities.Customer;
-import main.java.com.um.hoteladministration.repository.CustomerRepository;
+import com.um.hoteladministration.repository.CustomerRepository;
+import com.um.hoteladministration.repository.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 public class CustomerService {
@@ -17,5 +19,13 @@ public class CustomerService {
 
     public Customer getById(Long customerId) {
         return customerRepository.getById(customerId);
+    }
+
+    public Set<Customer> getAllByHotelId(Long hotelId) {
+        return customerRepository.getAllByHotelId(hotelId);
+    }
+
+    public Set<Customer> getAllByRoomId(Long roomId) {
+        return customerRepository.getAllByRoomId(roomId);
     }
 }

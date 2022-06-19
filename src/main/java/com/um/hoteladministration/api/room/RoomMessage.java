@@ -1,59 +1,31 @@
-package main.java.com.um.hoteladministration.api.room;
-
-import main.java.com.um.hoteladministration.repository.entities.Customer;
-import main.java.com.um.hoteladministration.repository.entities.Hotel;
+package com.um.hoteladministration.api.room;
 
 public class RoomMessage {
+    private final Long id;
+    private final Integer number;
+    private final Boolean isTaken;
+    private final Integer capacity;
 
-    private Long roomId;
-    private Hotel hotel;
-    private Customer customer;
-    private Boolean isTaken;
-    private Integer capacity;
-
-    public RoomMessage(Long roomId, Hotel hotel, Integer capacity) {
+    public RoomMessage(Long id, Integer number, Boolean isTaken, Integer capacity) {
+        this.id = id;
+        this.number = number;
+        this.isTaken = isTaken;
         this.capacity = capacity;
-        this.roomId = roomId;
-        this.hotel = hotel;
     }
 
-    public Long getRoomId() {
-        return roomId;
+    public Long getId() {
+        return id;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
+    public Integer getNumber() {
+        return number;
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Boolean getIsTaken() {
+    public Boolean getTaken() {
         return isTaken;
-    }
-
-    public void setIsTaken(Boolean taken) {
-        isTaken = taken;
     }
 
     public Integer getCapacity() {
         return capacity;
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
     }
 }

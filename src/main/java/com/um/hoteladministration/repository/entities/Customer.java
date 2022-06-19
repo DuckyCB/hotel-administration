@@ -1,4 +1,4 @@
-package main.java.com.um.hoteladministration.repository.entities;
+package com.um.hoteladministration.repository.entities;
 
 import javax.persistence.*;
 
@@ -6,25 +6,21 @@ import javax.persistence.*;
 @Table(name = "customer", schema = "hotel_administration")
 public class Customer {
     @Id
-    @Column(name = "customerId", nullable = false)
-    private Long customerId;
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    @Column(name = "fullName", nullable = false, length = 40)
+    @Column(name = "full_name", nullable = false, length = 40)
     private String fullName;
 
     @Column(name = "email", nullable = false, length = 40)
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "room", referencedColumnName = "roomId")
-    private Rooms room;
-
-    public Long getCustomerId() {
-        return customerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFullName() {
@@ -41,14 +37,6 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Rooms getRoom() {
-        return room;
-    }
-
-    public void setRoom(Rooms room) {
-        this.room = room;
     }
 }
 

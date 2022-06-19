@@ -1,7 +1,7 @@
-package main.java.com.um.hoteladministration.services.mapper;
+package com.um.hoteladministration.services.mapper;
 
-import main.java.com.um.hoteladministration.api.customer.CustomerMessage;
-import main.java.com.um.hoteladministration.repository.entities.Customer;
+import com.um.hoteladministration.api.customer.CustomerMessage;
+import com.um.hoteladministration.repository.entities.Customer;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,10 +9,9 @@ public class CustomerMapper {
 
     public CustomerMessage toCustomerMessage(Customer customer) {
         return new CustomerMessage(
-                customer.getCustomerId(),
+                customer.getId(),
                 customer.getFullName(),
-                customer.getEmail(),
-                customer.getRoom()
+                customer.getEmail()
         );
     }
 }
