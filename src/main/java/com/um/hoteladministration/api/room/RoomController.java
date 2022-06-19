@@ -40,7 +40,7 @@ public class RoomController {
         return new ResponseEntity<>(roomMessageSet, HttpStatus.OK);
     }
 
-    @GetMapping(path = {"/notTaken/{hotelId}"})
+    @GetMapping(path = {"/hotel/notTaken/{hotelId}"})
     public ResponseEntity<Set<RoomMessage>> getAllByHotelIdNotTaken(@PathVariable Long hotelId) {
         Set<Room> roomSet = roomService.getAllByHotelIdNotTaken(hotelId);
         Set<RoomMessage> roomMessageSet = roomSet.stream()
