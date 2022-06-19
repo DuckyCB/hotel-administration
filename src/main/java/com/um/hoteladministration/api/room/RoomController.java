@@ -1,11 +1,11 @@
 package com.um.hoteladministration.api.room;
 
-import com.um.hoteladministration.api.hotel.HotelMessage;
-import com.um.hoteladministration.repository.entities.Hotel;
 import com.um.hoteladministration.repository.entities.Room;
-import com.um.hoteladministration.repository.models.HotelModel;
+import com.um.hoteladministration.repository.entities.RoomCustomer;
+import com.um.hoteladministration.repository.models.RoomCustomerModel;
 import com.um.hoteladministration.repository.models.RoomModel;
 import com.um.hoteladministration.services.RoomService;
+import com.um.hoteladministration.services.mapper.RoomCustomerMapper;
 import com.um.hoteladministration.services.mapper.RoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,11 +21,13 @@ import java.util.stream.Collectors;
 public class RoomController {
     private final RoomService roomService;
     private final RoomMapper roomMapper;
+    private final RoomCustomerMapper roomCustomerMapper;
 
     @Autowired
-    public RoomController(RoomService roomService, RoomMapper roomMapper) {
+    public RoomController(RoomService roomService, RoomMapper roomMapper, RoomCustomerMapper roomCustomerMapper) {
         this.roomService = roomService;
         this.roomMapper = roomMapper;
+        this.roomCustomerMapper = roomCustomerMapper;
     }
 
     @GetMapping(path = {"/{roomId}"})
@@ -54,7 +56,7 @@ public class RoomController {
     }
 
     @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<RoomMessage> newHotel(@RequestBody RoomModel roomModel) {
+    public ResponseEntity<RoomMessage> newRoom(@RequestBody RoomModel roomModel) {
         Room room = new Room(
                 roomModel.getId(),
                 roomModel.getHotelId(),
@@ -65,5 +67,16 @@ public class RoomController {
         Room roomSaved = roomService.createNew(room);
         RoomMessage hotelMessage = roomMapper.toRoomMapper(roomSaved);
         return new ResponseEntity<>(hotelMessage, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/addCustomerToRoom", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<RoomCustomerMessage> addCustomerToRoom(@RequestBody RoomCustomerModel roomCustomerModel) {
+        RoomCustomer roomCustomer = new RoomCustomer(
+                roomCustomerModel.getRoomId(),
+                roomCustomerModel.getRoomId()
+        );
+        RoomCustomer roomCustomerSaved = roomService.addCustomerToRoom(roomCustomer);
+        RoomCustomerMessage roomCustomerMessage = roomCustomerMapper.toRoomCustomer(roomCustomerSaved);
+        return new ResponseEntity<>(roomCustomerMessage, HttpStatus.OK);
     }
 }
