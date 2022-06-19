@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @RestController
 @CrossOrigin
 @RequestMapping(path = "api/hotel")
@@ -26,5 +29,12 @@ public class HotelController {
         Hotel hotel = hotelService.getById(hotelId);
         HotelMessage hotelMessage = hotelMapper.toHotelMessage(hotel);
         return new ResponseEntity<>(hotelMessage, HttpStatus.OK);
+    }
+
+    @GetMapping(path = {"/"})
+    public ResponseEntity<Set<HotelMessage>> getAll() {
+        Set<Hotel> hotelSet = hotelService.getAll();
+        Set<HotelMessage> hotelMessageSet = hotelSet.stream().map(hotelMapper::toHotelMessage).collect(Collectors.toSet());
+        return new ResponseEntity<>(hotelMessageSet, HttpStatus.OK);
     }
 }

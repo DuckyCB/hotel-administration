@@ -5,6 +5,8 @@ import com.um.hoteladministration.repository.entities.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class HotelService {
 
@@ -18,4 +20,6 @@ public class HotelService {
     public Hotel getById(Long hotelId) {
         return hotelRepository.getById(hotelId);
     }
+
+    public Set<Hotel> getAll() { return hotelRepository.getAll(); }
 }
