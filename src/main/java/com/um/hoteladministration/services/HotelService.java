@@ -22,4 +22,6 @@ public class HotelService {
     }
 
     public Set<Hotel> getAll() { return hotelRepository.getAll(); }
+
+    public Hotel createNew(Hotel hotel) { return hotelRepository.save(hotel); }
 }

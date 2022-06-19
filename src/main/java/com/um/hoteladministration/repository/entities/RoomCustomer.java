@@ -13,6 +13,14 @@ public class RoomCustomer {
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
+    public RoomCustomer(Long roomId, Long customerId) {
+        this.roomId = roomId;
+        this.customerId = customerId;
+    }
+
+    public RoomCustomer() {
+    }
+
     public Long getRoomId() {
         return roomId;
     }

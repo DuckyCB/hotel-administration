@@ -28,4 +28,6 @@ public class RoomService {
     public Set<Room> getAllByHotelIdNotTaken(Long hotelId) {
         return roomRepository.getAllByHotelIdNotTaken(hotelId);
     }
+
+    public Room createNew(Room room) { return roomRepository.save(room); }
 }

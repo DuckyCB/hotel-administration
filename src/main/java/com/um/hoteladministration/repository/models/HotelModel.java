@@ -1,31 +1,22 @@
-package com.um.hoteladministration.repository.entities;
+package com.um.hoteladministration.repository.models;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "hotel", schema = "hotel_administration")
-public class Hotel {
-    @Id
-    @Column(name = "id", nullable = false)
+public class HotelModel {
+    @JsonProperty("id")
     private Long id;
-
-    @Column(name = "name", nullable = false, length = 40)
+    @JsonProperty("name")
     private String name;
-
-    @Column(name = "address", nullable = false, length = 40)
+    @JsonProperty("address")
     private String address;
-
-    @Column(name = "room_qty", nullable = false)
+    @JsonProperty("roomQty")
     private Integer roomQty;
 
-    public Hotel(Long id, String name, String address, Integer roomQty) {
+    public HotelModel(Long id, String name, String address, Integer roomQty) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.roomQty = roomQty;
-    }
-
-    public Hotel() {
     }
 
     public Long getId() {
@@ -40,8 +31,8 @@ public class Hotel {
         return name;
     }
 
-    public void setName(String hotelName) {
-        this.name = hotelName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
@@ -60,5 +51,3 @@ public class Hotel {
         this.roomQty = roomQty;
     }
 }
-
-

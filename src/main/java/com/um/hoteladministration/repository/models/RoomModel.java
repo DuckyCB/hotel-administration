@@ -1,27 +1,20 @@
-package com.um.hoteladministration.repository.entities;
+package com.um.hoteladministration.repository.models;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "room", schema = "hotel_administration")
-public class Room {
-    @Id
-    @Column(name = "id", nullable = false)
+public class RoomModel {
+    @JsonProperty("id")
     private Long id;
-
-    @Column(name = "hotel_id", nullable = false)
+    @JsonProperty("hotelId")
     private Long hotelId;
-
-    @Column(name = "capacity", nullable = false)
+    @JsonProperty("capacity")
     private Integer capacity;
-
-    @Column(name = "number", nullable = false)
+    @JsonProperty("number")
     private Integer number;
-
-    @Column(name = "is_taken", nullable = false)
+    @JsonProperty("isTaken")
     private Boolean isTaken;
 
-    public Room(Long id, Long hotelId, Integer capacity, Integer number, Boolean isTaken) {
+    public RoomModel(Long id, Long hotelId, Integer capacity, Integer number, Boolean isTaken) {
         this.id = id;
         this.hotelId = hotelId;
         this.capacity = capacity;
@@ -29,11 +22,20 @@ public class Room {
         this.isTaken = isTaken;
     }
 
-    public Room() {
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(Long hotelId) {
+        this.hotelId = hotelId;
     }
 
     public Integer getCapacity() {

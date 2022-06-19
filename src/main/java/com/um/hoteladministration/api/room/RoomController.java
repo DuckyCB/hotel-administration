@@ -1,6 +1,10 @@
 package com.um.hoteladministration.api.room;
 
+import com.um.hoteladministration.api.hotel.HotelMessage;
+import com.um.hoteladministration.repository.entities.Hotel;
 import com.um.hoteladministration.repository.entities.Room;
+import com.um.hoteladministration.repository.models.HotelModel;
+import com.um.hoteladministration.repository.models.RoomModel;
 import com.um.hoteladministration.services.RoomService;
 import com.um.hoteladministration.services.mapper.RoomMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +51,19 @@ public class RoomController {
                 .map(roomMapper::toRoomMapper)
                 .collect(Collectors.toSet());
         return new ResponseEntity<>(roomMessageSet, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<RoomMessage> newHotel(@RequestBody RoomModel roomModel) {
+        Room room = new Room(
+                roomModel.getId(),
+                roomModel.getHotelId(),
+                roomModel.getCapacity(),
+                roomModel.getNumber(),
+                roomModel.getTaken()
+        );
+        Room roomSaved = roomService.createNew(room);
+        RoomMessage hotelMessage = roomMapper.toRoomMapper(roomSaved);
+        return new ResponseEntity<>(hotelMessage, HttpStatus.OK);
     }
 }

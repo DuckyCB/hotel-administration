@@ -1,6 +1,7 @@
 package com.um.hoteladministration.api.hotel;
 
 import com.um.hoteladministration.repository.entities.Hotel;
+import com.um.hoteladministration.repository.models.HotelModel;
 import com.um.hoteladministration.services.HotelService;
 import com.um.hoteladministration.services.mapper.HotelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,18 @@ public class HotelController {
         Set<Hotel> hotelSet = hotelService.getAll();
         Set<HotelMessage> hotelMessageSet = hotelSet.stream().map(hotelMapper::toHotelMessage).collect(Collectors.toSet());
         return new ResponseEntity<>(hotelMessageSet, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<HotelMessage> newHotel(@RequestBody HotelModel hotelModel) {
+        Hotel hotel = new Hotel(
+                hotelModel.getId(),
+                hotelModel.getName(),
+                hotelModel.getAddress(),
+                hotelModel.getRoomQty()
+        );
+        Hotel hotelSaved = hotelService.createNew(hotel);
+        HotelMessage hotelMessage = hotelMapper.toHotelMessage(hotelSaved);
+        return new ResponseEntity<>(hotelMessage, HttpStatus.OK);
     }
 }

@@ -10,7 +10,7 @@ public class HotelMapper {
     public HotelMessage toHotelMessage(Hotel hotel) {
         return new HotelMessage(
                 hotel.getId(),
-                hotel.getHotelName(),
+                hotel.getName(),
                 hotel.getAddress(),
                 hotel.getRoomQty()
         );
