@@ -18,6 +18,13 @@ public class Hotel {
     @Column(name = "room_qty", nullable = false)
     private Integer roomQty;
 
+    public Hotel(Long id, String hotelName, String address, Integer roomQty) {
+        this.id = id;
+        this.hotelName = hotelName;
+        this.address = address;
+        this.roomQty = roomQty;
+    }
+
     public Long getId() {
         return id;
     }

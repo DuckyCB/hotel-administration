@@ -1,6 +1,7 @@
 package com.um.hoteladministration.api.customer;
 
 import com.um.hoteladministration.repository.entities.Customer;
+import com.um.hoteladministration.repository.models.CustomerModel;
 import com.um.hoteladministration.services.CustomerService;
 import com.um.hoteladministration.services.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +51,15 @@ public class CustomerController {
         return new ResponseEntity<>(customerMessageSet, HttpStatus.OK);
     }
 
-    @PostMapping("/new")
-    Customer newCustomer(@RequestBody Customer newCustomer) {
-        return customerService.createNew(newCustomer);
+    @PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<CustomerMessage> newCustomer(@RequestBody CustomerModel customerModel) {
+        Customer customer = new Customer(
+                customerModel.getId(),
+                customerModel.getFullName(),
+                customerModel.getEmail()
+        );
+        Customer customerSaved = customerService.createNew(customer);
+        CustomerMessage customerMessage = customerMapper.toCustomerMessage(customerSaved);
+        return new ResponseEntity<>(customerMessage, HttpStatus.OK);
     }
 }

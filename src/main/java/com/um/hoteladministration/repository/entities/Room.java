@@ -21,6 +21,14 @@ public class Room {
     @Column(name = "is_taken", nullable = false)
     private Boolean isTaken;
 
+    public Room(Long id, Long hotelId, Integer capacity, Integer number, Boolean isTaken) {
+        this.id = id;
+        this.hotelId = hotelId;
+        this.capacity = capacity;
+        this.number = number;
+        this.isTaken = isTaken;
+    }
+
     public Long getId() {
         return id;
     }

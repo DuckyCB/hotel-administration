@@ -1,24 +1,22 @@
-package com.um.hoteladministration.repository.entities;
+package com.um.hoteladministration.repository.models;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-@Table(name = "customer", schema = "hotel_administration")
-public class Customer {
-    @Id
-    @Column(name = "id", nullable = false)
+public class CustomerModel {
+    @JsonProperty("id")
     private Long id;
-
-    @Column(name = "full_name", nullable = false, length = 40)
+    @JsonProperty("fullName")
     private String fullName;
-
-    @Column(name = "email", nullable = false, length = 40)
+    @JsonProperty("email")
     private String email;
 
-    public Customer(Long id, String fullName, String email) {
+    public CustomerModel(Long id, String fullName, String email) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
+    }
+
+    public CustomerModel() {
     }
 
     public Long getId() {
@@ -45,5 +43,3 @@ public class Customer {
         this.email = email;
     }
 }
-
-
