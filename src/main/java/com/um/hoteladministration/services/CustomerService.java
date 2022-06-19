@@ -28,4 +28,8 @@ public class CustomerService {
     public Set<Customer> getAllByRoomId(Long roomId) {
         return customerRepository.getAllByRoomId(roomId);
     }
+
+    public Customer createNew(Customer customer) {
+        return customerRepository.save(customer);
+    }
 }

@@ -1,7 +1,5 @@
 package com.um.hoteladministration.api.room;
 
-import com.um.hoteladministration.api.customer.CustomerMessage;
-import com.um.hoteladministration.repository.entities.Customer;
 import com.um.hoteladministration.repository.entities.Room;
 import com.um.hoteladministration.services.RoomService;
 import com.um.hoteladministration.services.mapper.RoomMapper;

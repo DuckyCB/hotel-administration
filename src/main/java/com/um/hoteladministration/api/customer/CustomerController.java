@@ -49,4 +49,9 @@ public class CustomerController {
                 .collect(Collectors.toSet());
         return new ResponseEntity<>(customerMessageSet, HttpStatus.OK);
     }
+
+    @PostMapping("/new")
+    Customer newCustomer(@RequestBody Customer newCustomer) {
+        return customerService.createNew(newCustomer);
+    }
 }
